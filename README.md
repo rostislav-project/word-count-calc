@@ -8,9 +8,9 @@ This project counts the number of occurrences of words in a text file.
 ## Example
     javac WordCount.java demo.txt 5
 ### Result
-# merry = 16
-# christmas = 8
-# their = 8
-# to = 8
-# and = 6
-# cheer = 6
+#### merry = 16
+#### christmas = 8
+#### their = 8
+#### to = 8
+#### and = 6
+#### cheer = 6
