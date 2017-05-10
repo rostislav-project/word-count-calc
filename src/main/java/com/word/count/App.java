@@ -19,7 +19,6 @@ public class App {
 
     public static void main(String[] args) throws IOException {
 
-//        args = new String[]{"/home/dn021092trd/IdeaProjects/words-calc/src/main/resources/demo.txt", "10"};
         if(args.length < 2){
             System.out.println("One of parameters is not specified\n[java -jar wordCount.jar $fileName $limit]");
             exit(1);
@@ -55,7 +54,6 @@ public class App {
         }
         finally { ch.close(); }
 
-//        TODO Decorator for sorting
         Map<String, Integer> result = MapUtil.sortByValue(MapUtil.sortByName(wordMath.getResult()));
 
         for (Map.Entry<String, Integer> entry : result.entrySet()) {
