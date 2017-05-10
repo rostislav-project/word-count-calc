@@ -12,12 +12,12 @@ import java.util.Map;
 
 import static java.lang.System.exit;
 
-public class WordCount {
+public class App {
     public static final int BUFF_SIZE  = 4096;
 
     public static void main(String[] args) throws IOException {
 
-        args = new String[]{"/Users/rostislav/IdeaProjects/words-calc/src/main/resources/demo.txt", "5"};
+        args = new String[]{"/home/dn021092trd/IdeaProjects/words-calc/src/main/resources/demo.txt", "10"};
         if(args.length < 2){
             System.out.println("One of parameters is not specified");
             exit(1);
@@ -28,13 +28,12 @@ public class WordCount {
 
         ByteBuffer bf = ByteBuffer.allocate(BUFF_SIZE);
         FileChannel ch = new FileReader(fileName).getCh();
-
-        WordReader wordReader = new WordReader();
         WordMath wordMath = new WordMath();
 
         String encoding = System.getProperty("file.encoding");
         String text = null;
         List<String> words;
+
         try{
             while((ch.read(bf)) != -1){
                 bf.flip();
@@ -42,13 +41,16 @@ public class WordCount {
                         .decode(bf)
                         .toString();
 
-                words = wordReader.getWordFromText(text);
+                words = WordReader.getWordFromText(text);
 
                 for(int i = 0; i < words.size(); i++)
                     wordMath.calcWordCount(words.get(i));
                 bf.clear();
             }
-        } catch (IOException e){}
+        } catch (IOException e){
+            System.out.println(e.getMessage());
+            exit(1);
+        }
         finally { ch.close(); }
 
 //        TODO Decorator for sorting
