@@ -6,7 +6,7 @@ This project counts the number of occurrences of words in a text file.
 * java 1.7
 
 ## Example
-    javac com.word.count.App.java demo.txt 5
+    java -jar wordCount.jar ~/demo.txt 3
 ### Result
     merry = 16
     christmas = 8
