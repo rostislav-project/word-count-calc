@@ -1,3 +1,5 @@
+package com.word.count;
+
 import com.word.count.math.WordMath;
 import com.word.count.readers.FileReader;
 import com.word.count.readers.WordReader;
@@ -17,9 +19,9 @@ public class App {
 
     public static void main(String[] args) throws IOException {
 
-        args = new String[]{"/home/dn021092trd/IdeaProjects/words-calc/src/main/resources/demo.txt", "10"};
+//        args = new String[]{"/home/dn021092trd/IdeaProjects/words-calc/src/main/resources/demo.txt", "10"};
         if(args.length < 2){
-            System.out.println("One of parameters is not specified");
+            System.out.println("One of parameters is not specified\n[java -jar wordCount.jar $fileName $limit]");
             exit(1);
         }
 
@@ -57,7 +59,7 @@ public class App {
         Map<String, Integer> result = MapUtil.sortByValue(MapUtil.sortByName(wordMath.getResult()));
 
         for (Map.Entry<String, Integer> entry : result.entrySet()) {
-            if (limit < 0)
+            if (limit <= 0)
                 break;
             System.out.println(entry.getKey() + " = " + entry.getValue());
             limit --;

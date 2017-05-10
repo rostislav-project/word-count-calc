@@ -5,7 +5,7 @@ import java.util.List;
 
 public class WordReader {
 
-    public List<String> getWordFromText(String text){
+    public static List<String> getWordFromText(String text){
         List<String> result = new ArrayList<>();
         String[] words = text.toLowerCase()
                 .replaceAll("[,.!?\"-]","")
