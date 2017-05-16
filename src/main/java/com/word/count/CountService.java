@@ -20,15 +20,15 @@ public class CountService {
     private WordMap wordMap;
     private WordConverter converter;
 
-    public CountService(String fileName) {
-        this.fileName = fileName;
+    public CountService(WordMap wordMap, WordConverter converter) {
         bf = ByteBuffer.allocate(BUFF_SIZE);
         encoding = System.getProperty("file.encoding");
-        wordMap = new WordMap();
-        converter = new WordConverter();
+        this.wordMap = wordMap;
+        this.converter = converter;
     }
 
-    public void runService() throws FileNotFoundException, IOException {
+    public void runService(String fileName) throws FileNotFoundException, IOException {
+        this.fileName = fileName;
         ch = new FileInputStream(fileName).getChannel();
         String text = null;
         List<String> words;
@@ -52,17 +52,11 @@ public class CountService {
         }
     }
 
-    public void printServiceByLimit(int limit){
-        Map<String, Integer> result = wordMap.sortByName()
+    public Map<String, Integer> getSortResult(){
+        return wordMap.sortByName()
                 .sortByValue()
                 .getWordMap();
-
-        for(Map.Entry<String, Integer> entry : result.entrySet()){
-            if (limit <= 0)
-                break;
-
-            System.out.println(entry.getKey() + " = " + entry.getValue());
-            limit --;
-        }
     }
+
+
 }
