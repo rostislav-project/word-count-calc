@@ -9,8 +9,6 @@ import static java.lang.System.exit;
 public class App {
     public static void main(String[] args) {
 
-        args = new String[]{"/home/dn021092trd/IdeaProjects/words-calc/src/main/resources/demo.txt", "3"};
-
         if(args.length < 2){
             System.out.println("One of parameters is not specified\n[java -jar wordCount.jar $fileName $limit]");
             exit(1);
