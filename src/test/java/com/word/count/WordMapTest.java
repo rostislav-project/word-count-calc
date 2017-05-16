@@ -49,12 +49,4 @@ public class WordMapTest {
         assertEquals(null, wordMap.getWordMap().get("any"));
     }
 
-    @Test
-    public void sortByName() throws Exception {
-    }
-
-    @Test
-    public void sortByValue() throws Exception {
-    }
-
 }

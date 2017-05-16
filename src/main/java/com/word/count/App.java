@@ -3,10 +3,22 @@ package com.word.count;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Map;
 
 import static java.lang.System.exit;
 
 public class App {
+
+    public void printServiceByLimit(int limit, Map<String, Integer> result){
+        for(Map.Entry<String, Integer> entry : result.entrySet()){
+            if (limit <= 0)
+                break;
+
+            System.out.println(entry.getKey() + " = " + entry.getValue());
+            limit --;
+        }
+    }
+
     public static void main(String[] args) {
 
         if(args.length < 2){
@@ -16,11 +28,12 @@ public class App {
 
         String fileName = args[0];
         int limit = Integer.parseInt(args[1]);
-        CountService service = new CountService(fileName);
+        CountService service = new CountService(new WordMap(), new WordConverter());
+        App app = new App();
 
         try{
-            service.runService();
-            service.printServiceByLimit(limit);
+            service.runService(fileName);
+            app.printServiceByLimit(limit,service.getSortResult());
 
         }catch (FileNotFoundException e) {
             System.out.println("File not found");
